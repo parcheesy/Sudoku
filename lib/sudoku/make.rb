@@ -17,7 +17,8 @@ module Sudoku
     c.create_base
     c.randomize_base
     s = Solver.new(c)
-    
+    saved_solution = s.dup
+
     #Add an empty '.' slot the number of times indicated
     missing_entries.times do
       #Keep track if a solvable puzzle is created
@@ -48,12 +49,12 @@ module Sudoku
       #If 1000 tries was not enough to successfully place an additional "."
       #return the puzzle as it is with false, indicating a failure
       unless solution
-        return s, false
+        return s, saved_solution, false
       end
     end
     #If the proper number of missing entries were added return the resulting puzzle
     #with true to indicating a success
-    return s, true
+    return s, saved_solution, true
 
   end
 

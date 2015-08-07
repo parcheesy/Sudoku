@@ -11,8 +11,6 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://domain.com/"
   spec.license       = "MIT"
 
-  spec.files         = ['lib/sudoku.rb']
-  spec.executables   = ['bin/sudoku']
-  spec.test_files    = ['tests/test_sudoku.rb']
-  spec.require_paths = ['lib'] 
+  spec.files         = Dir["{lib}/**/*.rb"]
+  spec.require_path  = 'lib'
 end

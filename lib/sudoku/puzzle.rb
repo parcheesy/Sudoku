@@ -96,15 +96,11 @@ module Sudoku
     #And each row, column, and box has a complete set of values 1-9
     #Returns true if complete, false if not
     def complete?
-      @puzzle.each do |entry|
-        return false unless @choices.include? entry
+      if @puzzle.include? "."
+        return false
+      else
+        return true
       end
-
-      0.upto(8) do |n|
-        return false if @rows[n].sort!=@choices || @columns[n].sort!=@choices || @boxes[n].sort!=@choices
-      end
-
-      return true
     end
 
     #Resets the puzzle, rows, columns, and boxes completely
